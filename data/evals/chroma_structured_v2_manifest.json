@@ -1,0 +1,22 @@
+{
+  "created_at": "2026-09-04T07:21:56.654060+00:00",
+  "collection": "mec_5g_docs_structured_v2",
+  "chroma_dir": "D:\\mec_5g_agent_data\\chroma_db",
+  "embedding_backend": "sentence-transformers",
+  "embedding_model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "chunking_version": "section-token-v2",
+  "chunk_max_tokens": 112,
+  "chunk_overlap_tokens": 16,
+  "document_units": 184,
+  "chunk_count": 1671,
+  "max_observed_tokens": 112,
+  "content_types": {
+    "paragraph": 376,
+    "procedure": 432,
+    "api_schema": 330,
+    "mixed": 106,
+    "table": 427
+  },
+  "source_fingerprint": "8b096756c39e6baf02f30b59b90c8fc2e18f63bb9a45a347500d9bf1aa0491d1",
+  "verified_collection_count": 1671
+}

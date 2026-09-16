@@ -1,0 +1,22 @@
+[
+  {"id":"intro-01","question":"NEF 在 5GC 中的作用是什么？","expected_source":"mec_5g_intro.md","required_terms":["NEF","AF"]},
+  {"id":"intro-02","question":"SMF 如何参与用户面路径控制？","expected_source":"mec_5g_intro.md","required_terms":["SMF","UPF"]},
+  {"id":"intro-03","question":"PDR 和 FAR 分别负责什么？","expected_source":"mec_5g_intro.md","required_terms":["PDR","FAR"]},
+  {"id":"intro-04","question":"N3 和 N6 接口分别连接哪里？","expected_source":"mec_5g_intro.md","required_terms":["N3","N6"]},
+  {"id":"intro-05","question":"MEP、MEPM 和 MEC APP 的职责有什么区别？","expected_source":"mec_5g_intro.md","required_terms":["MEP","MEPM","MEC APP"]},
+  {"id":"intro-06","question":"AF 如何通过 NEF 提交 Traffic Influence 请求？","expected_source":"mec_5g_intro.md","required_terms":["AF","NEF","Traffic Influence"]},
+  {"id":"traffic-01","question":"Traffic Influence 请求通常包含哪些业务参数？","expected_source":"traffic_influence.md","required_terms":["Traffic Influence","DNN","DNAI"]},
+  {"id":"traffic-02","question":"NEF 返回成功是否说明 UPF 已安装分流规则？","expected_source":"traffic_influence.md","required_terms":["NEF","UPF"]},
+  {"id":"traffic-03","question":"Traffic Influence 下发后为什么还需要 SMF？","expected_source":"traffic_influence.md","required_terms":["SMF","PDR","FAR"]},
+  {"id":"traffic-04","question":"UPF 如何基于 N3 和 N6 进行本地分流？","expected_source":"traffic_influence.md","required_terms":["UPF","N3","N6"]},
+  {"id":"traffic-05","question":"流量没有进入 MEC APP 时，MEP 侧需要检查什么？","expected_source":"traffic_influence.md","required_terms":["MEP","MEC APP"]},
+  {"id":"traffic-06","question":"NEF 成功后仍不能访问 MEC APP，应该排查哪些组件？","expected_source":"traffic_influence.md","required_terms":["SMF","UPF","MEC APP"]},
+  {"id":"trouble-01","question":"如何检查 NEF_NBI 请求的字段是否完整？","expected_source":"troubleshooting.md","required_terms":["NEF_NBI","DNN","DNAI"]},
+  {"id":"trouble-02","question":"为什么 NEF 成功响应不能代表分流已经生效？","expected_source":"troubleshooting.md","required_terms":["NEF","UPF"]},
+  {"id":"trouble-03","question":"如何排查 SMF 没有触发 PDU Session 规则更新？","expected_source":"troubleshooting.md","required_terms":["SMF","PDU Session"]},
+  {"id":"trouble-04","question":"如何确认 UPF 的 PDR 和 FAR 是否正确安装？","expected_source":"troubleshooting.md","required_terms":["UPF","PDR","FAR"]},
+  {"id":"trouble-05","question":"N3/N6 抓包时应确认哪些流量路径？","expected_source":"troubleshooting.md","required_terms":["N3","N6","UPF"]},
+  {"id":"trouble-06","question":"MEC APP 流量不通时如何检查 MEP Traffic Rule？","expected_source":"troubleshooting.md","required_terms":["MEP","MEC APP"]},
+  {"id":"trouble-07","question":"MEC APP Service 需要检查哪些健康状态？","expected_source":"troubleshooting.md","required_terms":["MEC APP Service","健康"]},
+  {"id":"trouble-08","question":"MEC 分流失败的常见原因有哪些？","expected_source":"troubleshooting.md","required_terms":["SMF","UPF","N6"]}
+]

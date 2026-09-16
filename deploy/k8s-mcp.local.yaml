@@ -1,0 +1,120 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agent-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-mcp
+  template:
+    metadata:
+      labels:
+        app: k8s-mcp
+    spec:
+      serviceAccountName: k8s-mcp
+      # Avoid Kubernetes Service environment variables such as
+      # K8S_MCP_PORT=tcp://10.x.x.x:8000 colliding with the server's numeric
+      # listen-port setting.
+      enableServiceLinks: false
+      containers:
+        - name: k8s-mcp
+          image: docker.io/library/mec-k8s-mcp:0.1.1
+          imagePullPolicy: Never
+          ports:
+            - name: mcp
+              containerPort: 8000
+          env:
+            - name: PYTHONDONTWRITEBYTECODE
+              value: "1"
+            - name: K8S_MCP_HOST
+              value: "0.0.0.0"
+            - name: K8S_MCP_PORT
+              value: "8000"
+            - name: K8S_ALLOWED_NAMESPACES
+              value: "agent-system"
+            - name: K8S_LOG_MAX_LINES
+              value: "500"
+            - name: K8S_LOG_MAX_BYTES
+              value: "262144"
+            - name: K8S_LOG_MAX_SINCE_SECONDS
+              value: "86400"
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+          readinessProbe:
+            tcpSocket:
+              port: mcp
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: mcp
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+spec:
+  selector:
+    app: k8s-mcp
+  ports:
+    - name: mcp
+      port: 8000
+      targetPort: mcp
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: k8s-mcp-pod-diagnostics-reader
+  namespace: agent-system
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "pods/log", "events"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: k8s-mcp-pod-diagnostics-reader
+  namespace: agent-system
+subjects:
+  - kind: ServiceAccount
+    name: k8s-mcp
+    namespace: agent-system
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: k8s-mcp-pod-diagnostics-reader

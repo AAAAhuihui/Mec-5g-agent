@@ -17,18 +17,24 @@ ProgressCallback = Callable[[int, int], None]
 
 
 class VectorStore:
-    """Chroma 优先；缺少 chromadb 时降级到本地 JSON，便于 MVP 无依赖演示。"""
+    """Chroma 优先；缺少 chromadb 时降级到本地 JSON，支持依赖受限的开发环境。"""
 
-    def __init__(self, embedding_model: EmbeddingModel | None = None) -> None:
+    def __init__(
+        self,
+        embedding_model: EmbeddingModel | None = None,
+        *,
+        collection_name: str | None = None,
+        persist_dir: str | Path | None = None,
+    ) -> None:
         self.embedding_model = embedding_model or EmbeddingModel()
-        self.persist_dir = settings.chroma_dir
+        self.persist_dir = Path(persist_dir) if persist_dir is not None else settings.chroma_dir
         self.persist_dir.mkdir(parents=True, exist_ok=True)
-        self.collection_name = settings.collection_name
+        self.collection_name = collection_name or settings.collection_name
         self.backend = "json"
         self.load_error: str | None = None
         self._client = None
         self._collection = None
-        self._json_path = self.persist_dir / "fallback_store.json"
+        self._json_path = self.persist_dir / f"fallback_store_{self.collection_name}.json"
         try:
             os.environ.setdefault("ANONYMIZED_TELEMETRY", "False")
             import chromadb
@@ -61,13 +67,12 @@ class VectorStore:
                 embeddings = self.embedding_model.embed(texts)
                 ids = [self._doc_id(chunk) for chunk in batch]
                 metadatas = [dict(chunk.get("metadata", {})) for chunk in batch]
-                for doc_id, embedding, text, metadata in zip(ids, embeddings, texts, metadatas):
-                    self._collection.upsert(
-                        ids=[doc_id],
-                        embeddings=[embedding],
-                        documents=[text],
-                        metadatas=[metadata],
-                    )
+                self._collection.upsert(
+                    ids=ids,
+                    embeddings=embeddings,
+                    documents=texts,
+                    metadatas=metadatas,
+                )
                 if progress_callback is not None:
                     progress_callback(done, len(chunks))
             return len(chunks)
@@ -161,6 +166,11 @@ class VectorStore:
             for record in self._load_json_records()
         ]
 
+    def count(self) -> int:
+        if self._collection is not None:
+            return int(self._collection.count())
+        return len(self._load_json_records())
+
     def _load_json_records(self) -> list[dict[str, Any]]:
         if not self._json_path.exists():
             return list(_MEMORY_RECORDS.values())
@@ -180,6 +190,9 @@ class VectorStore:
 
     def _doc_id(self, chunk: dict[str, Any]) -> str:
         metadata = chunk.get("metadata", {})
+        stable_id = str(metadata.get("chunk_id", "")).strip()
+        if stable_id:
+            return stable_id
         source = metadata.get("source") or chunk.get("source", "unknown")
         chunk_index = metadata.get("chunk_index", "")
         content = str(chunk.get("content", ""))

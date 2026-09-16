@@ -18,7 +18,7 @@ class DeepSeekClient:
     def available(self) -> bool:
         return bool(self.api_key)
 
-    def chat(self, messages: list[dict[str, str]], temperature: float = 0.2) -> str | None:
+    def chat(self, messages: list[dict[str, Any]], temperature: float = 0.2) -> str | None:
         if not self.available:
             return None
         try:
@@ -34,7 +34,7 @@ class DeepSeekClient:
         except Exception:
             return None
 
-    def json_chat(self, messages: list[dict[str, str]]) -> dict[str, Any] | None:
+    def json_chat(self, messages: list[dict[str, Any]]) -> dict[str, Any] | None:
         content = self.chat(messages, temperature=0.0)
         if not content:
             return None
@@ -50,3 +50,45 @@ class DeepSeekClient:
                     return None
         return None
 
+    def tool_call(
+        self,
+        messages: list[dict[str, Any]],
+        tools: list[dict[str, Any]],
+        tool_choice: str = "required",
+    ) -> dict[str, Any] | None:
+        if not self.available:
+            return None
+        try:
+            from openai import OpenAI
+
+            client = OpenAI(api_key=self.api_key, base_url=self.base_url)
+            response = client.chat.completions.create(
+                model=self.model,
+                messages=messages,
+                tools=tools,
+                tool_choice=tool_choice,
+                temperature=0.0,
+            )
+            message = response.choices[0].message
+            tool_calls = getattr(message, "tool_calls", None)
+            if not tool_calls:
+                return None
+
+            tool_call = tool_calls[0]
+            function = getattr(tool_call, "function", None)
+            if function is None:
+                return None
+
+            arguments = getattr(function, "arguments", "") or "{}"
+            try:
+                parsed_args = json.loads(arguments)
+            except json.JSONDecodeError:
+                return None
+
+            return {
+                "id": getattr(tool_call, "id", ""),
+                "name": getattr(function, "name", ""),
+                "arguments": parsed_args,
+            }
+        except Exception:
+            return None

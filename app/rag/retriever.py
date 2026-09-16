@@ -1,10 +1,11 @@
 from __future__ import annotations
 
-import hashlib
 from typing import Any
 
 from app.config import settings
-from app.rag.keyword_search import keyword_search
+from app.rag.context_windows import build_context_windows
+from app.rag.fusion import reciprocal_rank_fusion
+from app.rag.keyword_search import BM25Index
 from app.rag.vector_store import VectorStore
 
 
@@ -13,32 +14,44 @@ class HybridRetriever:
         self.vector_store = vector_store or VectorStore()
 
     def retrieve(self, queries: list[str], top_k: int | None = None) -> list[dict[str, Any]]:
-        limit = top_k or settings.top_k
-        merged: dict[str, dict[str, Any]] = {}
-        all_docs = self.vector_store.all_documents()
+        """Return RRF-fused candidates; final truncation happens after reranking."""
+        limit = top_k or settings.rag_fused_candidate_k
+        all_documents = self.vector_store.all_documents()
+        bm25_index = BM25Index(all_documents)
+        result_lists: list[tuple[str, list[dict[str, Any]]]] = []
 
-        for query in queries:
-            vector_docs = self.vector_store.similarity_search(query, top_k=limit)
-            keyword_docs = keyword_search(query, all_docs, top_k=limit)
-            for doc in [*vector_docs, *keyword_docs]:
-                key = self._dedupe_key(doc)
-                existing = merged.get(key)
-                if existing is None or float(doc.get("score", 0.0)) > float(existing.get("score", 0.0)):
-                    merged[key] = {
-                        "content": doc.get("content", ""),
-                        "source": doc.get("source", "unknown"),
-                        "score": float(doc.get("score", 0.0)),
-                        "metadata": doc.get("metadata", {}),
-                    }
+        for query_index, query in enumerate(queries):
+            vector_documents = self.vector_store.similarity_search(
+                query,
+                top_k=settings.rag_vector_candidate_k,
+            )
+            for document in vector_documents:
+                document["retrieval_method"] = "vector"
+            bm25_documents = bm25_index.search(
+                query,
+                top_k=settings.rag_bm25_candidate_k,
+            )
+            result_lists.extend(
+                [
+                    (f"q{query_index}:vector", vector_documents),
+                    (f"q{query_index}:bm25", bm25_documents),
+                ]
+            )
 
-        return sorted(merged.values(), key=lambda item: item["score"], reverse=True)[:limit]
+        return reciprocal_rank_fusion(
+            result_lists,
+            top_k=limit,
+            rrf_k=settings.rag_rrf_k,
+        )
 
-    def _dedupe_key(self, doc: dict[str, Any]) -> str:
-        metadata = doc.get("metadata", {})
-        source = metadata.get("source", doc.get("source", "unknown"))
-        chunk_index = metadata.get("chunk_index")
-        if chunk_index is not None:
-            return f"{source}:{chunk_index}"
-        content = str(doc.get("content", ""))
-        return hashlib.sha1(f"{source}:{content[:200]}".encode("utf-8")).hexdigest()
-
+    def expand_context_windows(
+        self,
+        candidates: list[dict[str, Any]],
+        *,
+        radius: int = 1,
+    ) -> list[dict[str, Any]]:
+        return build_context_windows(
+            candidates,
+            self.vector_store.all_documents(),
+            radius=radius,
+        )

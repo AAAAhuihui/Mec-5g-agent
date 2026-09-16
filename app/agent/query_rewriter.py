@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-
+#扩展查询关键词，增加命中概率
 def generate_queries(question: str, intent: str, domain_entities: list[str]) -> list[str]:
     queries = [question]
     lowered = question.lower()

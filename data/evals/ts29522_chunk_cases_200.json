@@ -1,0 +1,2809 @@
+[
+  {
+    "id": "ts29522-001",
+    "question": "3GPP TS 29.503的标题是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      110
+    ],
+    "required_terms": [
+      "3GPP TS 29.503",
+      "Unified Data Management Services"
+    ],
+    "gold_answer": "3GPP TS 29.503的标题是\"5G System; Unified Data Management Services; Stage 3\"。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-002",
+    "question": "3GPP TS 29.523的标题是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      111
+    ],
+    "required_terms": [
+      "3GPP TS 29.523",
+      "Policy Control Event Exposure Service"
+    ],
+    "gold_answer": "3GPP TS 29.523的标题是\"5G System; Policy Control Event Exposure Service; Stage 3\"。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-003",
+    "question": "缩写GMLC代表什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      115
+    ],
+    "required_terms": [
+      "GMLC",
+      "Global Mobile Location Centre"
+    ],
+    "gold_answer": "GMLC代表Global Mobile Location Centre。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-004",
+    "question": "Nnef_PFDManagement服务中哪些操作适用于NEF北向接口？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      119
+    ],
+    "required_terms": [
+      "Nnef_PFDManagement",
+      "Create/Update/Delete"
+    ],
+    "gold_answer": "只有Nnef_PFDManagement_Create/Update/Delete服务操作适用于NEF北向接口。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-005",
+    "question": "Nnef_APISupportCapability服务在什么情况下适用？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      120
+    ],
+    "required_terms": [
+      "Nnef_APISupportCapability",
+      "API_SUPPORT_CAPABILITY"
+    ],
+    "gold_answer": "Nnef_APISupportCapability服务仅在MonitoringEvent API中监控类型设置为\"API_SUPPORT_CAPABILITY\"时适用。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-006",
+    "question": "NEF支持PFD功能时，可以执行哪些操作？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      122
+    ],
+    "required_terms": [
+      "PFD",
+      "UDR"
+    ],
+    "gold_answer": "NEF可以支持PFD功能，允许AF提供PFD，并可能在UDR中存储和检索PFD，还将PFD提供给SMF。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-007",
+    "question": "当监控类型设置为LOCATION_REPORTING时，支持哪些值？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      124
+    ],
+    "required_terms": [
+      "LOCATION_REPORTING",
+      "C"
+    ],
+    "gold_answer": "当监控类型设置为LOCATION_REPORTING时，仅支持\"C\"值，其他值不适用。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-008",
+    "question": "当UE被注销时，lossOfConnectReason属性应设置为什么值？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      126
+    ],
+    "required_terms": [
+      "lossOfConnectReason",
+      "6"
+    ],
+    "gold_answer": "当UE被注销时，lossOfConnectReason属性应设置为6。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-009",
+    "question": "AF如何创建监控事件订阅？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      128
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "Monitoring Event Subscriptions"
+    ],
+    "gold_answer": "AF发送HTTP POST消息到NEF的资源\"Monitoring Event Subscriptions\"来创建订阅。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-010",
+    "question": "NEF收到事件通知后，如何向AF发送报告？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      129
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "MonitoringEventReport"
+    ],
+    "gold_answer": "NEF发送HTTP POST消息到AF，并在每个MonitoringEventReport中包含下行数据传送状态和受影响的描述符。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-011",
+    "question": "当支持eLCS特性时，AF如何更新订阅？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      131
+    ],
+    "required_terms": [
+      "HTTP PUT",
+      "Individual Monitoring Event Subscription"
+    ],
+    "gold_answer": "AF发送HTTP PUT消息到NEF的资源\"Individual Monitoring Event Subscription\"，并在MonitoringEventSubscription中包含包过滤描述。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-012",
+    "question": "在位置信息订阅中，MonitoringEventSubscription可以包含哪些属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      133
+    ],
+    "required_terms": [
+      "reportingLocEstInd",
+      "samplingInterval"
+    ],
+    "gold_answer": "可以包含报告位置估计指示、采样间隔、最大报告过期间隔、支持的GAD形状、代码字等属性，以及仅包含地理区域的locationArea5G属性。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-013",
+    "question": "NEF如何与AMF交互以获取位置事件？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      136
+    ],
+    "required_terms": [
+      "Namf_EventExposure_Subscribe",
+      "AMF"
+    ],
+    "gold_answer": "NEF通过调用Namf_EventExposure_Subscribe服务操作与AMF交互，并接收来自AMF的位置事件通知。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-014",
+    "question": "NEF收到成功的位置响应后，如何响应AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      137
+    ],
+    "required_terms": [
+      "Individual Monitoring Event Subscription",
+      "HTTP POST"
+    ],
+    "gold_answer": "NEF创建或更新\"Individual Monitoring Event Subscription\"资源，然后发送HTTP POST或PUT响应给AF。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-015",
+    "question": "在设备触发过程中，NEF与UDM交互使用哪些服务？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      139
+    ],
+    "required_terms": [
+      "Nudm_SubscriberDataManagement",
+      "Nudm_UEContextManagement"
+    ],
+    "gold_answer": "NEF使用Nudm_SubscriberDataManagement服务和Nudm_UEContextManagement服务与UDM交互。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-016",
+    "question": "当NEF收到BDT警告通知时，如何通知AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      141
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "ExNotification"
+    ],
+    "gold_answer": "NEF发送HTTP POST消息，包含ExNotification数据结构，发送到AF的notificationDestination URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-017",
+    "question": "在BDT策略协商中，AF如何请求禁用或启用BDT警告通知？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      143
+    ],
+    "required_terms": [
+      "warnNotifEnabled",
+      "HTTP PATCH"
+    ],
+    "gold_answer": "AF通过在HTTP PATCH消息中包含\"warnNotifEnabled\"属性来请求禁用或启用BDT警告通知。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-018",
+    "question": "当PFD被成功配置到部分订阅的SMF但未全部成功时，NEF（PFDF）如何通知AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      146
+    ],
+    "required_terms": [
+      "PfdReport",
+      "locationArea"
+    ],
+    "gold_answer": "NEF（PFDF）通过HTTP POST消息通知AF，消息体中包含PfdReport数据结构，并可在PFD报告中包含\"locationArea\"属性以指示无法执行所配置PFD的用户面位置区域。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-019",
+    "question": "当PFD在允许延迟内未配置到任何订阅的SMF时，NEF（PFDF）应如何通知AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      147
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "failure code"
+    ],
+    "gold_answer": "NEF（PFDF）应通过HTTP POST消息通知AF，并使用3GPP TS 29.122 [4]中表5.11.2.2.3-1定义的适当失败码。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-020",
+    "question": "AF更新现有流量影响订阅时，应发送什么HTTP消息到哪个资源？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      149
+    ],
+    "required_terms": [
+      "HTTP PUT",
+      "Individual Traffic Influence Subscription"
+    ],
+    "gold_answer": "AF应发送HTTP PUT或PATCH消息到\"Individual Traffic Influence Subscription\"资源，以请求更改流量影响参数。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-021",
+    "question": "当NEF从BSF收到错误码时，NEF应如何处理资源创建、更新或删除？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      151
+    ],
+    "required_terms": [
+      "BSF",
+      "error code"
+    ],
+    "gold_answer": "NEF不应创建、更新或删除资源，并应向AF响应适当的错误状态码。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-022",
+    "question": "对于HTTP DELETE请求，NEF成功删除流量影响订阅后应返回什么状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      153
+    ],
+    "required_terms": [
+      "204 No Content"
+    ],
+    "gold_answer": "NEF应返回204 No Content状态码。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-023",
+    "question": "NEF在创建流量影响订阅时，成功响应中包含的Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      155
+    ],
+    "required_terms": [
+      "Location header"
+    ],
+    "gold_answer": "Location头字段包含所创建资源的URI，AF在后续请求中应使用该URI来引用此流量影响订阅。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-024",
+    "question": "对于HTTP PUT或PATCH请求，NEF更新流量影响订阅后应返回什么状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      156
+    ],
+    "required_terms": [
+      "200 OK"
+    ],
+    "gold_answer": "NEF应返回200 OK状态码。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-025",
+    "question": "当SMF在事件通知中提供\"ackUri\"属性时，NEF应在EventNotification数据中提供什么属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      158
+    ],
+    "required_terms": [
+      "afAckUri",
+      "EventNotification"
+    ],
+    "gold_answer": "NEF应在EventNotification数据中提供\"afAckUri\"属性，用于AF确认。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-026",
+    "question": "AF在发送HTTP POST请求作为UP路径管理事件通知的确认时，应在AfAckInfo数据类型中设置哪个属性以指示失败原因？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      160
+    ],
+    "required_terms": [
+      "AfAckInfo",
+      "afStatus"
+    ],
+    "gold_answer": "AF应在AfAckInfo数据类型的\"afStatus\"属性中设置相应的失败原因。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-027",
+    "question": "在更改计费方的过程中，NEF如何检索PCF地址？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      162
+    ],
+    "required_terms": [
+      "Nbsf_Management_Discovery"
+    ],
+    "gold_answer": "NEF可通过使用Nbsf_Management_Discovery服务与BSF交互来检索PCF地址。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-028",
+    "question": "当AF请求设置具有所需QoS的AF会话且UE为以太网时，AF应在HTTP POST/PUT请求中包含哪些属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      164
+    ],
+    "required_terms": [
+      "macAddr",
+      "ethFlowInfo"
+    ],
+    "gold_answer": "AF应在HTTP POST/PUT请求中包含UE MAC地址（\"macAddr\"属性）和以太网流描述（\"ethFlowInfo\"属性），而不是UE IP地址和IP流描述。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-029",
+    "question": "在QosMonitoringInformation数据结构中，当\"repFreqs\"属性包含\"EVENT_TRIGGERED\"时，AF应包含哪些延迟阈值？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      165
+    ],
+    "required_terms": [
+      "repThreshDl",
+      "repThreshUl",
+      "repThreshRp"
+    ],
+    "gold_answer": "AF应包含下行延迟阈值（\"repThreshDl\"）、上行延迟阈值（\"repThreshUl\"）和/或往返延迟阈值（\"repThreshRp\"）。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-030",
+    "question": "当NEF从PCF或SMF接收到UL、DL和/或往返延迟报告时，在\"ulDelays\"、\"dlDelays\"和/或\"rtDelays\"数组中应包含多少个元素？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      167
+    ],
+    "required_terms": [
+      "ulDelays",
+      "dlDelays",
+      "rtDelays"
+    ],
+    "gold_answer": "NEF在每个数组中只能包含一个元素，每个元素对应从PCF或SMF接收到的UL、DL和/或往返延迟报告。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-031",
+    "question": "当NEF收到PCF事件\"SUCCESSFUL_RESOURCES_ALLOCATION\"的通知时，它应如何通知AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      169
+    ],
+    "required_terms": [
+      "SUCCESSFUL_RESOURCES_ALLOCATION"
+    ],
+    "gold_answer": "NEF应通知AF该事件，并附上当前应用的QoS参考（如果收到）。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-032",
+    "question": "在NIDD配置过程中，AF收到NEF的HTTP POST请求后应如何响应？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      173
+    ],
+    "required_terms": [
+      "200 OK"
+    ],
+    "gold_answer": "AF应使用HTTP 200 OK响应确认HTTP POST请求。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-033",
+    "question": "在NIDD配置和交付过程中，对于MT NIDD，SMF与NEF之间的交互使用什么服务？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      174
+    ],
+    "required_terms": [
+      "Nsmf_NIDD"
+    ],
+    "gold_answer": "对于MT NIDD，SMF与NEF之间的交互使用Nsmf_NIDD服务，如3GPP TS 29.542 [25]所规定。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-034",
+    "question": "在AnalyticsExposureSubsc数据结构中，\"analyEventsSubs\"属性中的每个事件必须包含哪个属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      176
+    ],
+    "required_terms": [
+      "analyEventsSubs",
+      "analyEvent"
+    ],
+    "gold_answer": "每个事件必须包含事件标识符作为\"analyEvent\"属性。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-035",
+    "question": "在AnalyticsExposureSubsc数据结构中，\"tgtUe\"属性如果提供，可以包含哪些标识UE的方式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      178
+    ],
+    "required_terms": [
+      "tgtUe",
+      "gpsi",
+      "exterGroupId"
+    ],
+    "gold_answer": "\"tgtUe\"属性可以包含以下之一：通过\"gpsi\"属性标识单个UE，通过\"exterGroupId\"属性标识UE组，或通过\"anyUeInd\"属性标识任何UE。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-036",
+    "question": "当AF想要删除现有的分析暴露订阅时，应向NEF发送什么HTTP方法到哪个资源？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      180
+    ],
+    "required_terms": [
+      "HTTP DELETE",
+      "Individual Analytics Exposure Subscription"
+    ],
+    "gold_answer": "AF应发送HTTP DELETE消息到NEF的\"Individual Analytics Exposure Subscription\"资源。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-037",
+    "question": "在NEF收到NWDAF的成功响应后，对于HTTP POST请求，NEF应如何创建资源并响应AF？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      181
+    ],
+    "required_terms": [
+      "201 Created",
+      "Location header"
+    ],
+    "gold_answer": "NEF应创建\"Individual Analytics Exposure Subscription\"资源，该资源表示分析暴露订阅，由包含AF标识符和NEF创建的订阅标识符的URI寻址，并以201 Created状态码响应AF，包括包含所创建资源URI的Location头字段。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-038",
+    "question": "当NEF以200 OK响应AF时，如果并非所有请求的分析事件都修改成功，NEF可以包含什么属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      183
+    ],
+    "required_terms": [
+      "failEventReports"
+    ],
+    "gold_answer": "NEF可以包含\"failEventReports\"属性，指示修改失败的事件及关联原因。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-039",
+    "question": "AF通过NEF获取分析信息时，应发送什么HTTP方法到哪个URI？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      185
+    ],
+    "required_terms": [
+      "fetch",
+      "AnalyticsRequest"
+    ],
+    "gold_answer": "AF应发送HTTP POST消息到NEF的自定义操作URI \"{apiRoot}/3gpp-analyticsexposure/v1/{afId}/fetch\"，请求体包含AnalyticsRequest数据结构。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-040",
+    "question": "在AF授权后，NEF收到POST请求时，首先与哪个网络功能交互以转换GPSI或外部组标识符？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      187
+    ],
+    "required_terms": [
+      "Nudm_SubscriberDataManagement",
+      "GPSI"
+    ],
+    "gold_answer": "NEF与UDM交互，使用Nudm_SubscriberDataManagement服务将GPSI或外部组标识符转换为对应的SUPI或内部组标识符。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-041",
+    "question": "AF为了创建新的5G LAN参数配置订阅，应向NEF发送什么HTTP请求到哪个资源？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      189
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "5GLAN Parameters Provision Subscriptions"
+    ],
+    "gold_answer": "AF应发起HTTP POST请求到NEF的\"5GLAN Parameters Provision Subscriptions\"资源。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-042",
+    "question": "在AF发送的HTTP POST消息体中，5G LAN服务相关参数应包含在哪个属性中？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      190
+    ],
+    "required_terms": [
+      "5gLanParams"
+    ],
+    "gold_answer": "5G LAN服务相关参数应包含在\"5gLanParams\"属性中。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-043",
+    "question": "在HTTP PATCH消息体中，哪些字段在\"5gLanParams\"属性中不应被更新或修改？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      193
+    ],
+    "required_terms": [
+      "External Group Identifier",
+      "DNN",
+      "S-NSSAI"
+    ],
+    "gold_answer": "External Group Identifier、DNN、S-NSSAI和PDU session type(s)在\"5gLanParams\"属性中不应被更新或修改。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-044",
+    "question": "当NEF删除现有的\"Individual 5GLAN Parameters Provision Subscription\"资源后，应向AF发送什么HTTP状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      195
+    ],
+    "required_terms": [
+      "204 No Content"
+    ],
+    "gold_answer": "NEF应发送HTTP \"204 No Content\"响应。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-045",
+    "question": "AF为了更新已应用的BDT策略订阅，应向哪个资源发送什么HTTP方法？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      197
+    ],
+    "required_terms": [
+      "HTTP PATCH",
+      "Individual Applied BDT Policy Subscription"
+    ],
+    "gold_answer": "AF应发送HTTP PATCH消息到\"Individual Applied BDT Policy Subscription\"资源，请求体中包含新的Background Data Transfer Reference ID。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-046",
+    "question": "对于HTTP DELETE请求，NEF删除\"Individual Applied BDT Policy Subscription\"资源后，应响应什么状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      199
+    ],
+    "required_terms": [
+      "204 No Content"
+    ],
+    "gold_answer": "NEF应响应\"204 No Content\"状态码。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-047",
+    "question": "在增强覆盖限制控制过程中，当AF发送HTTP POST请求查询当前状态时，NEF应使用哪个服务与UDM交互？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      200
+    ],
+    "required_terms": [
+      "Nudm_SubscriberDataManagement"
+    ],
+    "gold_answer": "NEF应使用Nudm_SubscriberDataManagement服务与UDM交互。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-048",
+    "question": "在IPTV配置的HTTP POST请求中，IptvConfigData数据结构必须包含哪些属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      202
+    ],
+    "required_terms": [
+      "gpsi",
+      "appId",
+      "multiAccCtrls"
+    ],
+    "gold_answer": "必须包含：通过\"gpsi\"属性标识单个UE或通过\"exterGroupId\"属性标识UE组；应用标识符\"appId\"；以及多播访问控制列表\"multiAccCtrls\"。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-049",
+    "question": "对于HTTP POST请求，NEF创建\"Individual IPTV Configuration\"资源后，应响应什么状态码并包含什么头字段？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      205
+    ],
+    "required_terms": [
+      "201 Created",
+      "Location header"
+    ],
+    "gold_answer": "NEF应以201 Created状态码响应，并包含Location头字段，其中包含所创建资源的URI。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-050",
+    "question": "AF为了配置位置隐私指示参数，应向NEF的哪个资源发送HTTP POST请求？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      207
+    ],
+    "required_terms": [
+      "LPI Parameters Provisionings"
+    ],
+    "gold_answer": "AF应向NEF的\"LPI Parameters Provisionings\"资源发送HTTP POST请求。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-051",
+    "question": "在HTTP PUT请求中，LpiParametersProvision数据中的哪些字段应保持与之前的值不变？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      209
+    ],
+    "required_terms": [
+      "External Group Identifier",
+      "GPSI"
+    ],
+    "gold_answer": "External Group Identifier或GPSI应保持与之前的值不变。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-052",
+    "question": "NEF更新\"Individual LPI Parameters Provisioning\"资源后，可能发送哪些HTTP状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      210
+    ],
+    "required_terms": [
+      "200 OK",
+      "204 No Content"
+    ],
+    "gold_answer": "NEF可能发送包含LpiParametersProvision数据结构的\"200 OK\"状态码或\"204 No Content\"状态码。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-053",
+    "question": "在ServiceParameterData数据结构中，服务描述可以通过哪些属性提供？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      212
+    ],
+    "required_terms": [
+      "afServiceId",
+      "appId"
+    ],
+    "gold_answer": "服务描述可以通过DNN和S-NSSAI的组合（\"dnn\"和\"snssai\"属性）、AF服务标识符（\"afServiceId\"属性）或应用标识符（\"appId\"属性）提供。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-054",
+    "question": "AF为了更新现有的服务参数订阅，应向哪个资源发送什么HTTP方法？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      214
+    ],
+    "required_terms": [
+      "HTTP PUT",
+      "HTTP PATCH",
+      "Individual Service Parameter Subscription"
+    ],
+    "gold_answer": "AF应发送HTTP PUT或HTTP PATCH消息到\"Individual Service Parameter Subscription\"资源。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-055",
+    "question": "对于HTTP DELETE请求，NEF删除\"Individual Service Parameter Subscription\"资源后，应响应什么状态码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      216
+    ],
+    "required_terms": [
+      "204 No Content"
+    ],
+    "gold_answer": "NEF应响应\"204 No Content\"状态码。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-056",
+    "question": "在创建ACS配置订阅时，HTTP POST消息的请求体应包含什么数据结构，该结构需要包含哪些信息？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      218
+    ],
+    "required_terms": [
+      "AcsConfigurationData",
+      "acsInfo",
+      "exterGroupId"
+    ],
+    "gold_answer": "应包含AcsConfigurationData数据结构，其中需包含acsInfo属性中的ACS URL或地址，以及通过gpsi属性标识单个UE或通过exterGroupId属性标识UE组的订阅适用UE指示。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-057",
+    "question": "删除现有ACS配置订阅时，AF应向NEF发送什么HTTP消息，目标资源是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      219
+    ],
+    "required_terms": [
+      "HTTP DELETE",
+      "Individual ACS configuration Subscription"
+    ],
+    "gold_answer": "AF应发送HTTP DELETE消息到NEF的\"Individual ACS configuration Subscription\"资源。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-058",
+    "question": "NEF北向API在HTTP、内容类型和URI结构定义方面遵循哪个规范的哪些子条款？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      224
+    ],
+    "required_terms": [
+      "3GPP TS 29.122"
+    ],
+    "gold_answer": "遵循3GPP TS 29.122 [4]的子条款5.2.2、5.2.3和5.2.4。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-059",
+    "question": "在重用API中，ResourceManagementOfBdt的哪些特性可能仅在5G中支持？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      226
+    ],
+    "required_terms": [
+      "LocBdt_5G",
+      "Group_Id",
+      "BdtNotification_5G"
+    ],
+    "gold_answer": "LocBdt_5G、Group_Id和BdtNotification_5G特性可能仅在5G中支持。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-060",
+    "question": "MonitoringEvent API中，对于Pdn_connectivity_status特性，APN与DNN有何关系？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      227
+    ],
+    "required_terms": [
+      "Pdn_connectivity_status",
+      "APN",
+      "DNN"
+    ],
+    "gold_answer": "APN等同于DNN；非IP PDN类型等同于非结构化PDU会话类型；枚举InterfaceIndication值\"PDN_GATEWAY\"代表5G中锚定在UPF的PDU会话。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-061",
+    "question": "AsSessionWithQoS API中哪些特性可能仅在5G中支持？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      229
+    ],
+    "required_terms": [
+      "EthAsSessionQoS_5G",
+      "QoSMonitoring_5G",
+      "MacAddressRange_5G"
+    ],
+    "gold_answer": "EthAsSessionQoS_5G、QoSMonitoring_5G、MacAddressRange_5G和AlternativeQoS_5G特性可能仅在5G中支持。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-062",
+    "question": "TrafficInfluence API中，用于读取给定AF的所有订阅的HTTP方法和资源URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      231
+    ],
+    "required_terms": [
+      "GET",
+      "/{afId}/subscriptions"
+    ],
+    "gold_answer": "GET方法，资源URI为/{afId}/subscriptions。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-063",
+    "question": "TrafficInfluence API中，afId资源URI变量的数据类型和定义是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      233
+    ],
+    "required_terms": [
+      "afId",
+      "string"
+    ],
+    "gold_answer": "数据类型为string，定义是AF的标识符。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-064",
+    "question": "在TrafficInfluence订阅集合资源上执行GET方法，307响应码的Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      236
+    ],
+    "required_terms": [
+      "Location",
+      "307"
+    ],
+    "gold_answer": "Location头字段包含位于替代NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-065",
+    "question": "在TrafficInfluence订阅集合资源上执行POST方法，请求体应包含什么数据结构？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      238
+    ],
+    "required_terms": [
+      "TrafficInfluSub"
+    ],
+    "gold_answer": "请求体应包含TrafficInfluSub数据结构，用于注册影响流量路由和/或UP管理事件通知的订阅。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-066",
+    "question": "Individual Traffic Influence Subscription资源的URI结构是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      241
+    ],
+    "required_terms": [
+      "subscriptionId"
+    ],
+    "gold_answer": "{apiRoot}/3gpp-traffic-influence/v1/{afId}/subscriptions/{subscriptionId}",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-067",
+    "question": "在Individual Traffic Influence Subscription资源上执行GET方法，成功时的响应体包含什么数据结构及响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      243
+    ],
+    "required_terms": [
+      "TrafficInfluSub",
+      "200 OK"
+    ],
+    "gold_answer": "响应体包含TrafficInfluSub数据结构，响应码为200 OK。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-068",
+    "question": "在Individual Traffic Influence Subscription资源上执行PUT方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      245
+    ],
+    "required_terms": [
+      "PUT"
+    ],
+    "gold_answer": "PUT方法修改现有的订阅资源以更新订阅。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-069",
+    "question": "在Individual Traffic Influence Subscription资源上执行PUT方法，请求体应包含什么数据结构？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      246
+    ],
+    "required_terms": [
+      "TrafficInfluSub"
+    ],
+    "gold_answer": "请求体应包含TrafficInfluSub数据结构，用于修改现有的影响流量路由和/或UP管理事件通知的订阅。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-070",
+    "question": "在Individual Traffic Influence Subscription资源上执行PUT方法，307响应码的Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      248
+    ],
+    "required_terms": [
+      "Location",
+      "307"
+    ],
+    "gold_answer": "Location头字段包含位于替代NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-071",
+    "question": "在Individual Traffic Influence Subscription资源上执行PATCH方法，成功时的响应体包含什么数据结构及响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      251
+    ],
+    "required_terms": [
+      "TrafficInfluSub",
+      "200 OK"
+    ],
+    "gold_answer": "响应体包含TrafficInfluSub数据结构，响应码为200 OK。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-072",
+    "question": "在Individual Traffic Influence Subscription资源上执行DELETE方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      253
+    ],
+    "required_terms": [
+      "DELETE"
+    ],
+    "gold_answer": "DELETE方法删除给定AF的流量影响订阅。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-073",
+    "question": "在Individual Traffic Influence Subscription资源上执行DELETE方法，307响应码的Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      255
+    ],
+    "required_terms": [
+      "Location",
+      "307"
+    ],
+    "gold_answer": "Location头字段包含位于替代NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-074",
+    "question": "事件通知的HTTP方法是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      258
+    ],
+    "required_terms": [
+      "Event Notification",
+      "POST",
+      "NEF"
+    ],
+    "gold_answer": "事件通知使用POST方法，由NEF向AF发送UP管理事件通知。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-075",
+    "question": "self属性在什么情况下由NEF提供？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      274
+    ],
+    "required_terms": [
+      "self",
+      "TrafficInfluSub",
+      "NEF"
+    ],
+    "gold_answer": "self属性在包含TrafficInfluSub类型对象的HTTP响应中由NEF提供，用于链接到创建的资源。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-076",
+    "question": "TrafficInfluSubPatch类型用于什么HTTP方法？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      278
+    ],
+    "required_terms": [
+      "TrafficInfluSubPatch",
+      "HTTP PATCH"
+    ],
+    "gold_answer": "TrafficInfluSubPatch类型用于HTTP PATCH请求。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-077",
+    "question": "在EventNotification中，dnaiChgType属性的基数是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      281
+    ],
+    "required_terms": [
+      "dnaiChgType",
+      "M 1"
+    ],
+    "gold_answer": "dnaiChgType属性的基数为M 1，即必选且出现一次。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-078",
+    "question": "当afStatus为SUCCESS时，trafficRoute属性何时存在？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      286
+    ],
+    "required_terms": [
+      "afStatus",
+      "SUCCESS",
+      "trafficRoute"
+    ],
+    "gold_answer": "当afStatus为SUCCESS时，trafficRoute属性可能存在，表示与目标DNAI关联的N6流量路由信息。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-079",
+    "question": "ackResult属性的数据类型是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      288
+    ],
+    "required_terms": [
+      "ackResult",
+      "AfResultInfo"
+    ],
+    "gold_answer": "ackResult属性的数据类型是AfResultInfo，表示应用层处理的结果。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-080",
+    "question": "Notification_websocket特性要求同时支持哪个特性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      291
+    ],
+    "required_terms": [
+      "Notification_websocket",
+      "Notification_test_event"
+    ],
+    "gold_answer": "Notification_websocket特性要求同时支持Notification_test_event特性。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-081",
+    "question": "NiddConfigurationTrigger类型包含哪些属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      300
+    ],
+    "required_terms": [
+      "afId",
+      "nefId",
+      "gpsi"
+    ],
+    "gold_answer": "包含afId（标识触发接收实体）、nefId（标识触发发送实体）、gpsi（标识用户）和suppFeat（指示支持的特性列表）。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-082",
+    "question": "AnalyticsExposure API的资源URI结构是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      304
+    ],
+    "required_terms": [
+      "3gpp-analyticsexposure",
+      "subscriptions",
+      "afId"
+    ],
+    "gold_answer": "资源URI结构为{apiRoot}/3gpp-analyticsexposure/v1/{afId}/subscriptions，其中apiRoot定义于TS 29.122，afId为AF的标识符。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-083",
+    "question": "AnalyticsExposure API的fetch操作使用什么HTTP方法和资源URI？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      329
+    ],
+    "required_terms": [
+      "fetch",
+      "POST",
+      "AnalyticsRequest"
+    ],
+    "gold_answer": "fetch操作使用POST方法，资源URI为{apiRoot}/3gpp-analyticsexposure/v1/{afId}/fetch，用于请求获取分析信息。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-084",
+    "question": "当检测到分析事件时，NEF向AF发送通知使用什么HTTP方法？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      333
+    ],
+    "required_terms": [
+      "HTTP POST",
+      "NEF",
+      "AF"
+    ],
+    "gold_answer": "NEF应发送HTTP POST消息，其中包含通知的分析事件给AF。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-085",
+    "question": "在308响应码中，Location头部字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      338
+    ],
+    "required_terms": [
+      "Location",
+      "308",
+      "AF"
+    ],
+    "gold_answer": "Location头部字段包含一个替代URI，表示通知应被重定向到的替代AF的端点。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-086",
+    "question": "AnalyticsExposureSubsc数据类型中，notifUri属性的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      342
+    ],
+    "required_terms": [
+      "notifUri",
+      "Uri",
+      "Notification URI"
+    ],
+    "gold_answer": "notifUri属性是Uri类型，用于分析事件报告的Notification URI。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-087",
+    "question": "在AnalyticsExposureSubsc数据类型中，suppFeat属性在哪些情况下必须提供？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      344
+    ],
+    "required_terms": [
+      "suppFeat",
+      "POST",
+      "GET"
+    ],
+    "gold_answer": "suppFeat属性应在POST请求和成功创建资源的响应中提供，或者在HTTP GET请求包含'supp-feat'属性查询参数时的HTTP GET响应中提供。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-088",
+    "question": "在AnalyticsEventFilterSubsc类型中，locArea属性适用于哪些事件？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      351
+    ],
+    "required_terms": [
+      "locArea",
+      "Abnormal_Behavior",
+      "Congestion"
+    ],
+    "gold_answer": "locArea属性适用于Abnormal_Behavior、Congestion、Ue_Communication、Ue_Mobility、QoS_Sustainability和Network_Performance事件。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-089",
+    "question": "对于'ABNORMAL_BEHAVIOR'事件，当anyUeId属性设置为true且预期分析类型或异常ID列表与移动性相关时，应包含哪些属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      356
+    ],
+    "required_terms": [
+      "ABNORMAL_BEHAVIOR",
+      "anyUeId",
+      "locArea"
+    ],
+    "gold_answer": "应至少包含'locArea'和'snssai'属性中的一个。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-090",
+    "question": "在AnalyticsEventFilter类型中，当订阅的事件为'ABNORMAL_BEHAVIOR'时，必须提供哪个属性？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      365
+    ],
+    "required_terms": [
+      "ABNORMAL_BEHAVIOR",
+      "excepIds",
+      "exptAnaType"
+    ],
+    "gold_answer": "必须提供'excepIds'或'exptAnaType'属性中的一个。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-091",
+    "question": "当期望的分析类型或异常ID列表与通信相关时，请求中必须包含哪些属性中的至少一个？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      367
+    ],
+    "required_terms": [
+      "locArea",
+      "appIds",
+      "dnn"
+    ],
+    "gold_answer": "当期望的分析类型（exptAnaType）或异常ID列表（excepIds）与通信相关时，请求中必须至少包含locArea、appIds、dnn和snssai属性中的一个。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-092",
+    "question": "当分析结果是预测时，confidence属性的值范围是多少？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      374
+    ],
+    "required_terms": [
+      "confidence",
+      "0",
+      "100"
+    ],
+    "gold_answer": "当分析结果是预测时，confidence属性必须存在，其值范围为0到100。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-093",
+    "question": "在QoS可持续性信息中，qosFlowRetThd和ranUeThrouThd属性有何约束？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      376
+    ],
+    "required_terms": [
+      "qosFlowRetThd",
+      "ranUeThrouThd"
+    ],
+    "gold_answer": "qosFlowRetThd和ranUeThrouThd属性必须至少提供其中一个，用于报告QoS流保持性阈值或RAN UE吞吐量阈值。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-094",
+    "question": "在拥塞分析中，relativeRatio和absoluteNum属性有何约束？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      378
+    ],
+    "required_terms": [
+      "relativeRatio",
+      "absoluteNum"
+    ],
+    "gold_answer": "relativeRatio和absoluteNum属性必须至少提供其中一个，用于报告相对比率或绝对数量。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-095",
+    "question": "特性编号3对应的特性名称是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      384
+    ],
+    "required_terms": [
+      "Abnormal_Behavior"
+    ],
+    "gold_answer": "特性编号3对应的特性名称是Abnormal_Behavior，表示支持与UE异常行为相关的分析事件。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-096",
+    "question": "当Individual Analytics Exposure Subscription资源不存在时，返回的HTTP状态码和原因是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      386
+    ],
+    "required_terms": [
+      "SUBSCRIPTION_NOT_FOUND",
+      "404"
+    ],
+    "gold_answer": "当Individual Analytics Exposure Subscription资源不存在时，返回HTTP 404 Not Found，并在ProblemDetails中设置cause为SUBSCRIPTION_NOT_FOUND。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-097",
+    "question": "5GLANParameterProvision API的apiName和apiVersion分别是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      388
+    ],
+    "required_terms": [
+      "3gpp-5glan-pp",
+      "v1"
+    ],
+    "gold_answer": "apiName设置为\"3gpp-5glan-pp\"，apiVersion设置为\"v1\"。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-098",
+    "question": "在5GLANParameterProvision API中，用于创建新订阅的HTTP方法是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      390
+    ],
+    "required_terms": [
+      "POST"
+    ],
+    "gold_answer": "POST方法用于创建新的订阅以配置参数。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-099",
+    "question": "5GLAN参数配置订阅集合资源的URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      392
+    ],
+    "required_terms": [
+      "subscriptions"
+    ],
+    "gold_answer": "资源URI为{apiRoot}/3gpp-5glan-pp/v1/{afId}/subscriptions。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-100",
+    "question": "在5GLAN参数配置订阅集合资源上执行POST方法成功时，返回的HTTP状态码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      398
+    ],
+    "required_terms": [
+      "201"
+    ],
+    "gold_answer": "返回201 Created，并在Location头中返回新创建资源的URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-101",
+    "question": "在Individual 5GLAN Parameters Provision Subscription资源上执行GET方法时，URI查询参数是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      402
+    ],
+    "required_terms": [
+      "N/A"
+    ],
+    "gold_answer": "该GET方法不支持任何URI查询参数，表中显示为N/A。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-102",
+    "question": "在Individual 5GLAN Parameters Provision Subscription资源上执行GET方法时，307响应码的Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      404
+    ],
+    "required_terms": [
+      "Location",
+      "307"
+    ],
+    "gold_answer": "Location头字段提供位于备用NEF中的资源的替代URI，用于临时重定向。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-103",
+    "question": "AaaUsage枚举中\"IP_ALLOC\"代表什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      425
+    ],
+    "required_terms": [
+      "AaaUsage",
+      "IP_ALLOC",
+      "DN-AAA"
+    ],
+    "gold_answer": "AaaUsage枚举表示DN-AAA服务器的使用。\"IP_ALLOC\"表示由DN-AAA服务器分配UE IP地址。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-104",
+    "question": "ApplyingBdtPolicy API的根URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      427
+    ],
+    "required_terms": [
+      "ApplyingBdtPolicy",
+      "apiRoot",
+      "3gpp-applying-bdt-policy"
+    ],
+    "gold_answer": "ApplyingBdtPolicy API的所有资源URI应具有以下根：{apiRoot}/3gpp-applying-bdt-policy/v1/，其中apiRoot按3GPP TS 29.122 [4]子条款5.2.4设置，apiName设置为\"3gpp-applying-bdt-policy\"，apiVersion设置为\"v1\"。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-105",
+    "question": "Individual Applied BDT Policy Subscription资源的URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      439
+    ],
+    "required_terms": [
+      "Individual Applied BDT Policy Subscription",
+      "subscriptionId",
+      "afId"
+    ],
+    "gold_answer": "Individual Applied BDT Policy Subscription资源的URI为{apiRoot}/3gpp-applying-bdt-policy/v1/{afId}/subscriptions/{subscriptionId}，其中afId是AF的标识符，subscriptionId是订阅资源的标识符。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-106",
+    "question": "AppliedBdtPolicy类型表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      453
+    ],
+    "required_terms": [
+      "AppliedBdtPolicy",
+      "AF",
+      "NEF"
+    ],
+    "gold_answer": "AppliedBdtPolicy类型表示从AF发送到NEF的应用BDT策略。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-107",
+    "question": "IPTVConfiguration API的根URI中apiVersion的值是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      458
+    ],
+    "required_terms": [
+      "apiVersion",
+      "v1",
+      "IPTVConfiguration"
+    ],
+    "gold_answer": "apiVersion应设置为\"v1\"。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-108",
+    "question": "IPTV Configurations资源允许AF执行哪些操作？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      460
+    ],
+    "required_terms": [
+      "IPTV Configurations",
+      "AF",
+      "NEF"
+    ],
+    "gold_answer": "允许AF读取给定AF的所有活动IPTV配置，或在NEF中创建新的个体IPTV配置。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-109",
+    "question": "POST方法成功创建IPTV配置资源后返回什么响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      467
+    ],
+    "required_terms": [
+      "201",
+      "Created",
+      "Location"
+    ],
+    "gold_answer": "返回201 Created，且创建的资源的URI应在\"Location\"HTTP头中返回。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-110",
+    "question": "在资源修改期间，308永久重定向响应中必须包含哪个头部字段？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      484
+    ],
+    "required_terms": [
+      "308",
+      "Location"
+    ],
+    "gold_answer": "必须包含Location头部字段，其中包含位于备用NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-111",
+    "question": "IptvConfigData类型中，self属性在什么情况下必须存在？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      488
+    ],
+    "required_terms": [
+      "self",
+      "IptvConfigData"
+    ],
+    "gold_answer": "当读取AF的所有配置时，在HTTP GET响应中必须存在self属性，它标识单个IPTV配置资源URI。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-112",
+    "question": "MulticastAccessControl类型中，multicastV4Addr和multicastV6Addr属性有何约束？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      490
+    ],
+    "required_terms": [
+      "multicastV4Addr",
+      "multicastV6Addr"
+    ],
+    "gold_answer": "至少应提供multicastV4Addr或multicastV6Addr属性中的一个。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-113",
+    "question": "AccessRightStatus枚举中，PREVIEW_ALLOWED值表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      493
+    ],
+    "required_terms": [
+      "PREVIEW_ALLOWED"
+    ],
+    "gold_answer": "PREVIEW_ALLOWED表示允许用户预览访问该频道。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-114",
+    "question": "LPI参数配置API中，用于读取给定AF的所有LPI参数配置资源的HTTP方法和URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      495
+    ],
+    "required_terms": [
+      "GET",
+      "provisionedLpis"
+    ],
+    "gold_answer": "使用GET方法，URI为/{afId}/provisionedLpis。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-115",
+    "question": "在资源检索期间，307临时重定向响应中必须包含哪个头部字段？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      500
+    ],
+    "required_terms": [
+      "307",
+      "Location"
+    ],
+    "gold_answer": "必须包含Location头部字段，其中包含位于备用NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-116",
+    "question": "单个LPI参数配置资源的URI结构是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      505
+    ],
+    "required_terms": [
+      "provisionedLpiId",
+      "provisionedLpis"
+    ],
+    "gold_answer": "URI结构为{apiRoot}/3gpp-lpi-pp/v1/{afId}/provisionedLpis/{provisionedLpiId}。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-117",
+    "question": "在资源终止期间，307临时重定向响应中必须包含哪个头部字段？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      518
+    ],
+    "required_terms": [
+      "307",
+      "Location"
+    ],
+    "gold_answer": "必须包含Location头部字段，其中包含位于备用NEF中的资源的替代URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-118",
+    "question": "LpiParametersProvision数据类型中self属性的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      520
+    ],
+    "required_terms": [
+      "LpiParametersProvision",
+      "self",
+      "NEF"
+    ],
+    "gold_answer": "self属性用于标识单个参数配置资源，且该属性应由NEF在HTTP响应中提供。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-119",
+    "question": "在LPI参数配置中，NEF收到MTC Provider Id信息后可以采取哪些操作？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      522
+    ],
+    "required_terms": [
+      "MTC Provider Id",
+      "NEF",
+      "UDM"
+    ],
+    "gold_answer": "NEF可以覆盖为本地配置值并发送给UDM，或直接发送给UDM，或拒绝LPI参数配置请求。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-120",
+    "question": "ServiceParameter API的资源URI根路径是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      524
+    ],
+    "required_terms": [
+      "3gpp-service-parameter",
+      "apiRoot",
+      "apiVersion"
+    ],
+    "gold_answer": "所有资源URI的根路径为{apiRoot}/3gpp-service-parameter/v1/，其中apiName设置为\"3gpp-service-parameter\"，apiVersion设置为\"v1\"。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-121",
+    "question": "Service Parameter Subscriptions资源允许AF执行哪些操作？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      527
+    ],
+    "required_terms": [
+      "Service Parameter Subscriptions",
+      "AF",
+      "NEF"
+    ],
+    "gold_answer": "该资源允许AF读取给定AF的所有活动服务参数订阅，或在NEF中创建新的个体服务参数订阅。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-122",
+    "question": "Individual Service Parameter Subscription资源的URI结构是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      536
+    ],
+    "required_terms": [
+      "Individual Service Parameter Subscription",
+      "subscriptionId",
+      "afId"
+    ],
+    "gold_answer": "资源URI为{apiRoot}/3gpp-service-parameter/v1/{afId}/subscriptions/{subscriptionId}，其中afId是AF的标识符，subscriptionId是订阅资源的标识符。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-123",
+    "question": "ServiceParameterData类型中self属性的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      555
+    ],
+    "required_terms": [
+      "ServiceParameterData",
+      "self",
+      "NEF"
+    ],
+    "gold_answer": "self属性用于标识个体服务参数订阅资源URI，在包含ServiceParameterData类型对象的HTTP响应中应由NEF提供。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-124",
+    "question": "ParameterOverPc5简单数据类型用于什么目的，其编码应符合哪个规范中的定义？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      559
+    ],
+    "required_terms": [
+      "ParameterOverPc5",
+      "V2X",
+      "UE policies"
+    ],
+    "gold_answer": "ParameterOverPc5是用于V2X通信的配置参数，其编码应符合3GPP TS 24.588 [33]子条款5.3中定义的UE策略。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-125",
+    "question": "ACSParameterProvision API的资源URI根路径是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      561
+    ],
+    "required_terms": [
+      "3gpp-acs-pp",
+      "apiRoot",
+      "apiVersion"
+    ],
+    "gold_answer": "ACSParameterProvision API的所有资源URI根路径为{apiRoot}/3gpp-acs-pp/v1/，其中apiName设置为\"3gpp-acs-pp\"，apiVersion设置为\"v1\"。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-126",
+    "question": "在ACSParameterProvision API中，用于读取给定AF的所有订阅的HTTP方法和资源URI是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      563
+    ],
+    "required_terms": [
+      "GET",
+      "subscriptions",
+      "afId"
+    ],
+    "gold_answer": "使用HTTP GET方法，资源URI为/{afId}/subscriptions，用于读取给定AF的所有ACS配置订阅。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-127",
+    "question": "ACS配置订阅资源允许AF执行哪些操作？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      564
+    ],
+    "required_terms": [
+      "ACS Configuration Subscriptions",
+      "read",
+      "create"
+    ],
+    "gold_answer": "该资源允许AF读取给定AF的所有活动ACS配置订阅，或在NEF中创建新的个体ACS配置订阅。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-128",
+    "question": "在ACSParameterProvision API中，POST方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      568
+    ],
+    "required_terms": [
+      "POST",
+      "create",
+      "ACS configuration subscription"
+    ],
+    "gold_answer": "POST方法为给定AF创建新的个体ACS配置订阅资源。AF发起HTTP POST请求，NEF响应。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-129",
+    "question": "在ACSParameterProvision API中，GET方法用于读取什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      573
+    ],
+    "required_terms": [
+      "GET",
+      "active subscription",
+      "AF"
+    ],
+    "gold_answer": "GET方法用于读取给定AF和订阅ID的活动订阅。AF发起HTTP GET请求，NEF响应。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-130",
+    "question": "在ACSParameterProvision API中，PUT方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      576
+    ],
+    "required_terms": [
+      "PUT",
+      "modifies",
+      "update"
+    ],
+    "gold_answer": "PUT方法修改现有资源以更新配置。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-131",
+    "question": "在ACSParameterProvision API中，DELETE方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      580
+    ],
+    "required_terms": [
+      "DELETE",
+      "deletes",
+      "individual subscription"
+    ],
+    "gold_answer": "DELETE方法删除给定AF的现有个体订阅。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-132",
+    "question": "在ACSParameterProvision API中，DELETE方法返回307响应时，Location头字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      583
+    ],
+    "required_terms": [
+      "Location",
+      "alternative URI",
+      "alternative NEF"
+    ],
+    "gold_answer": "Location头字段包含位于替代NEF中的资源的替代URI，用于重定向处理。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-133",
+    "question": "MoLcsNotify API是否定义了资源？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      589
+    ],
+    "required_terms": [
+      "MoLcsNotify API",
+      "no resource"
+    ],
+    "gold_answer": "MoLcsNotify API没有定义任何资源。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-134",
+    "question": "在MoLcsNotify API中，POST方法成功接收通知后返回什么响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      591
+    ],
+    "required_terms": [
+      "200 OK",
+      "notification",
+      "received successfully"
+    ],
+    "gold_answer": "POST方法成功接收通知后返回200 OK。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-135",
+    "question": "MoLcsNotify API复用了哪些数据类型？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      594
+    ],
+    "required_terms": [
+      "SupportedFeatures",
+      "Gpsi",
+      "LocationInfo"
+    ],
+    "gold_answer": "MoLcsNotify API复用了SupportedFeatures、Gpsi、LocationInfo、LcsQosClass和ServiceIdentity等数据类型。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-136",
+    "question": "在LocUpdateDataReply数据类型中，suppFeat属性表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      596
+    ],
+    "required_terms": [
+      "suppFeat",
+      "SupportedFeatures"
+    ],
+    "gold_answer": "suppFeat属性表示SupportedFeatures，用于指示所支持的特性列表，其使用方式在子条款5.13.4中描述。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-137",
+    "question": "在MoLcsNotify API中，安全特性要求使用什么协议来支持NEF和AF之间的安全通信？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      598
+    ],
+    "required_terms": [
+      "TLS",
+      "OAuth2"
+    ],
+    "gold_answer": "安全特性要求使用TLS（IETF RFC 5246）来支持NEF和AF之间通过NEF北向接口的安全通信，并且访问SCEF北向API应通过OAuth2协议（基于本地配置）使用\"Client Credentials\"授权授权进行授权。",
+    "category": "security"
+  },
+  {
+    "id": "ts29522-138",
+    "question": "当与用于外部暴露的NEF交互时，NEF需要支持哪些CAPIF参考点上的功能？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      600
+    ],
+    "required_terms": [
+      "CAPIF-2/2e",
+      "CAPIF-3",
+      "CAPIF-4"
+    ],
+    "gold_answer": "NEF需要支持：通过CAPIF-2/2e和CAPIF-3参考点的API暴露功能及相关API；通过CAPIF-4参考点的API发布功能及相关API；通过CAPIF-5参考点的API管理功能及相关API；以及至少一种用于认证和授权的安全方法及相关安全机制。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-139",
+    "question": "当使用OAuth2作为AF和NEF之间的安全方法时，AF在消费NEF北向API服务之前需要做什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      602
+    ],
+    "required_terms": [
+      "Obtain_Authorization",
+      "token"
+    ],
+    "gold_answer": "AF需要从授权服务器获取\"token\"，通过调用Obtain_Authorization服务（如3GPP TS 29.222子条款5.6.2.3.2所述）来获取令牌。",
+    "category": "procedure"
+  },
+  {
+    "id": "ts29522-140",
+    "question": "NEF北向API在执行授权检查后，NEF需要应用什么控制？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      604
+    ],
+    "required_terms": [
+      "admission control"
+    ],
+    "gold_answer": "NEF需要根据访问控制策略应用准入控制。",
+    "category": "security"
+  },
+  {
+    "id": "ts29522-141",
+    "question": "本规范中OpenAPI定义未表达的信息元素和方法的语义和程序在哪里定义？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      606
+    ],
+    "required_terms": [
+      "OpenAPI"
+    ],
+    "gold_answer": "在规范的其他部分定义，例如适用性和属性或值的允许组合等条件，这些条件也适用。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-142",
+    "question": "在TrafficInfluence API中，路径/{afId}/subscriptions的GET方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      608
+    ],
+    "required_terms": [
+      "subscriptions",
+      "GET"
+    ],
+    "gold_answer": "读取该AF的所有活动订阅。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-143",
+    "question": "在TrafficInfluence API的POST订阅资源中，回调通知的响应码204表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      615
+    ],
+    "required_terms": [
+      "204"
+    ],
+    "gold_answer": "204表示成功通知（No Content）。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-144",
+    "question": "在TrafficInfluence API中，创建订阅资源的POST方法成功时返回什么响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      617
+    ],
+    "required_terms": [
+      "201"
+    ],
+    "gold_answer": "返回201 Created，表示成功创建订阅。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-145",
+    "question": "在TrafficInfluence API中，创建订阅资源成功时，响应头Location包含什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      618
+    ],
+    "required_terms": [
+      "Location"
+    ],
+    "gold_answer": "Location头包含新创建资源的URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-146",
+    "question": "在Individual Traffic Influence Subscription资源中，GET方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      620
+    ],
+    "required_terms": [
+      "Individual Traffic Influence Subscription"
+    ],
+    "gold_answer": "读取SCS/AS的活动订阅以及订阅ID对应的订阅。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-147",
+    "question": "在Individual Traffic Influence Subscription资源中，PUT方法的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      622
+    ],
+    "required_terms": [
+      "PUT"
+    ],
+    "gold_answer": "更新或替换现有的订阅资源。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-148",
+    "question": "在Individual Traffic Influence Subscription资源中，PATCH方法成功修改订阅后返回什么响应码？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      626
+    ],
+    "required_terms": [
+      "PATCH",
+      "200"
+    ],
+    "gold_answer": "返回200 OK，表示订阅修改成功。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-149",
+    "question": "在TrafficInfluSub数据类型中，appReloInd字段的含义是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      631
+    ],
+    "required_terms": [
+      "appReloInd"
+    ],
+    "gold_answer": "appReloInd标识一旦选择了应用的位置，应用是否可以重新定位。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-150",
+    "question": "在NEF向SCS/AS发送测试通知的机制中，requestTestNotification字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      633
+    ],
+    "required_terms": [
+      "requestTestNotification",
+      "test notification"
+    ],
+    "gold_answer": "requestTestNotification字段为布尔类型，当SCS/AS将其设置为true时，表示请求NEF发送测试通知，该测试通知的定义见子条款5.2.5.3。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-151",
+    "question": "在EthFlowDescription相关的数据结构中，trafficRoutes字段的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      635
+    ],
+    "required_terms": [
+      "trafficRoutes",
+      "N6 traffic routing"
+    ],
+    "gold_answer": "trafficRoutes字段是一个数组，其元素引用RouteToLocation类型，用于标识N6流量路由需求。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-152",
+    "question": "在某个数据结构中，tempValidities字段的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      638
+    ],
+    "required_terms": [
+      "tempValidities",
+      "TemporalValidity"
+    ],
+    "gold_answer": "tempValidities字段是一个数组，其元素引用TemporalValidity类型，且该字段可空，用于表示临时有效性。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-153",
+    "question": "在某个事件通知数据结构中，sourceTrafficRoute字段的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      640
+    ],
+    "required_terms": [
+      "sourceTrafficRoute",
+      "RouteToLocation"
+    ],
+    "gold_answer": "sourceTrafficRoute字段引用RouteToLocation类型，用于标识源流量路由。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-154",
+    "question": "在AfAckInfo数据结构中，ackResult字段的作用是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      642
+    ],
+    "required_terms": [
+      "AfAckInfo",
+      "ackResult"
+    ],
+    "gold_answer": "ackResult字段引用AfResultInfo类型，是AfAckInfo中的必选字段，用于表示确认结果。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-155",
+    "question": "NiddConfigurationTrigger API支持哪些安全机制？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      644
+    ],
+    "required_terms": [
+      "oAuth2ClientCredentials",
+      "security"
+    ],
+    "gold_answer": "NiddConfigurationTrigger API支持两种安全机制：一种是空安全（即无认证），另一种是OAuth2客户端凭证授权（oAuth2ClientCredentials）。",
+    "category": "security"
+  },
+  {
+    "id": "ts29522-156",
+    "question": "NiddConfigurationTrigger API的根路径支持哪些HTTP方法？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      645
+    ],
+    "required_terms": [
+      "post",
+      "NiddConfigurationTrigger"
+    ],
+    "gold_answer": "NiddConfigurationTrigger API的根路径（/）支持POST方法，用于触发NIDD配置。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-157",
+    "question": "在NiddConfigurationTrigger数据结构中，afId字段的用途是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      647
+    ],
+    "required_terms": [
+      "afId",
+      "trigger receiving entity"
+    ],
+    "gold_answer": "afId字段是字符串类型，用于标识触发接收实体。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-158",
+    "question": "AnalyticsExposure API的服务器URL路径是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      649
+    ],
+    "required_terms": [
+      "3gpp-analyticsexposure",
+      "apiRoot"
+    ],
+    "gold_answer": "AnalyticsExposure API的服务器URL路径为'{apiRoot}/3gpp-analyticsexposure/v1'，其中apiRoot在子条款5.2.4中定义。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-159",
+    "question": "在AnalyticsExposure API的订阅资源创建操作中，可能返回哪些错误响应？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      652
+    ],
+    "required_terms": [
+      "307",
+      "400",
+      "401"
+    ],
+    "gold_answer": "可能返回的错误响应包括307、308、400、401、403、404、406、429、500、503以及默认响应。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-160",
+    "question": "在AnalyticsExposure API中，创建新订阅资源的POST操作需要哪些路径参数？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      653
+    ],
+    "required_terms": [
+      "afId",
+      "post"
+    ],
+    "gold_answer": "创建新订阅资源的POST操作需要路径参数afId，用于标识AF，该参数是必需的。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-161",
+    "question": "在AnalyticsExposure API的某个操作中，可能返回哪些错误响应？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      655
+    ],
+    "required_terms": [
+      "307",
+      "308",
+      "400"
+    ],
+    "gold_answer": "可能返回的错误响应包括307、308、400、401、403、404、411、413等。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-162",
+    "question": "在AnalyticsExposure API的某个操作中，204响应表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      658
+    ],
+    "required_terms": [
+      "204",
+      "successfully created"
+    ],
+    "gold_answer": "204响应表示成功，资源已成功创建，且响应消息中不发送额外内容。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-163",
+    "question": "在AnalyticsExposure API中，读取订阅信息的GET操作需要哪些路径参数？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      660
+    ],
+    "required_terms": [
+      "afId",
+      "subscriptionId"
+    ],
+    "gold_answer": "读取订阅信息的GET操作需要路径参数afId和subscriptionId，分别用于标识AF和订阅资源。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-164",
+    "question": "在AnalyticsExposure API中，更新订阅资源的PUT操作需要哪些路径参数？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      663
+    ],
+    "required_terms": [
+      "afId",
+      "subscriptionId"
+    ],
+    "gold_answer": "更新订阅资源的PUT操作需要路径参数afId和subscriptionId，分别用于标识AF和订阅资源。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-165",
+    "question": "在AnalyticsExposure API的PUT操作中，204响应表示什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      665
+    ],
+    "required_terms": [
+      "204",
+      "successfully updated"
+    ],
+    "gold_answer": "204响应表示成功，资源已成功更新，且响应消息中不发送额外内容。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-166",
+    "question": "在AnalyticsExposure API中，删除订阅的DELETE操作需要哪些路径参数？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      667
+    ],
+    "required_terms": [
+      "afId",
+      "subscriptionId"
+    ],
+    "gold_answer": "删除订阅的DELETE操作需要路径参数afId和subscriptionId，分别用于标识AF和订阅资源。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-167",
+    "question": "在AnalyticsExposure API中，获取分析信息的POST操作路径是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      669
+    ],
+    "required_terms": [
+      "fetch",
+      "afId"
+    ],
+    "gold_answer": "获取分析信息的POST操作路径为'/{afId}/fetch'，其中afId是路径参数，用于标识AF。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-168",
+    "question": "在TS29122_CommonData.yaml中，响应码400、401、403等是如何被引用的？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      671
+    ],
+    "required_terms": [
+      "$ref",
+      "responses"
+    ],
+    "gold_answer": "这些响应码通过$ref引用TS29122_CommonData.yaml中的组件，例如'400'引用'TS29122_CommonData.yaml#/components/responses/400'，其他响应码类似。",
+    "category": "openapi"
+  },
+  {
+    "id": "ts29522-169",
+    "question": "AnalyticsExposureSubsc模式中，analyEventsSubs字段的类型和最小数量是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      672
+    ],
+    "required_terms": [
+      "analyEventsSubs",
+      "minItems"
+    ],
+    "gold_answer": "analyEventsSubs字段是数组类型，其元素引用AnalyticsEventSubsc模式，且minItems为1，即至少包含一个元素。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-170",
+    "question": "在AnalyticsExposureSubsc模式中，哪个字段用于请求NEF发送测试通知？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      674
+    ],
+    "required_terms": [
+      "websockNotifConfig"
+    ],
+    "gold_answer": "该字段是websockNotifConfig，它引用TS29122_CommonData.yaml中的WebsockNotifConfig模式，用于配置WebSocket通知。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-171",
+    "question": "AnalyticsEventNotif模式中，哪些字段是必需的？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      676
+    ],
+    "required_terms": [
+      "analyEvent",
+      "timeStamp"
+    ],
+    "gold_answer": "必需的字段是analyEvent和timeStamp，它们分别引用AnalyticsEvent和DateTime类型。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-172",
+    "question": "AnalyticsEventSubsc模式中，excepRequs字段的元素引用哪个模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      678
+    ],
+    "required_terms": [
+      "excepRequs",
+      "Exception"
+    ],
+    "gold_answer": "excepRequs字段是数组，其元素引用TS29520_Nnwdaf_EventsSubscription.yaml中的Exception模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-173",
+    "question": "TargetUeId模式中，anyUeInd字段的类型是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      680
+    ],
+    "required_terms": [
+      "anyUeInd",
+      "boolean"
+    ],
+    "gold_answer": "anyUeInd字段的类型是boolean，用于指示是否针对任意UE。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-174",
+    "question": "UeMobilityExposure模式中，哪些字段是必需的？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      681
+    ],
+    "required_terms": [
+      "duration",
+      "locInfo"
+    ],
+    "gold_answer": "必需的字段是duration和locInfo，其中duration引用DurationSec，locInfo是UeLocationInfo数组。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-175",
+    "question": "AnalyticsEventFilter模式中，nwPerfTypes字段的元素引用什么模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      683
+    ],
+    "required_terms": [
+      "nwPerfTypes",
+      "NetworkPerfType"
+    ],
+    "gold_answer": "nwPerfTypes字段是数组，其元素引用TS29520_Nnwdaf_EventsSubscription.yaml中的NetworkPerfType模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-176",
+    "question": "在某个模式中，ueMobilityInfos字段的元素引用什么模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      685
+    ],
+    "required_terms": [
+      "ueMobilityInfos",
+      "UeMobilityExposure"
+    ],
+    "gold_answer": "ueMobilityInfos字段是数组，其元素引用UeMobilityExposure模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-177",
+    "question": "AbnormalExposure模式中，gpsis字段的元素引用什么模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      687
+    ],
+    "required_terms": [
+      "gpsis",
+      "Gpsi"
+    ],
+    "gold_answer": "gpsis字段是数组，其元素引用TS29571_CommonData.yaml中的Gpsi模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-178",
+    "question": "CongestionAnalytics模式中，哪些字段是必需的？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      689
+    ],
+    "required_terms": [
+      "cngType",
+      "tmWdw",
+      "nsi"
+    ],
+    "gold_answer": "必需的字段是cngType、tmWdw和nsi，分别引用CongestionType、TimeWindow和ThresholdLevel。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-179",
+    "question": "QosSustainabilityExposure模式中，哪些字段是必需的？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      690
+    ],
+    "required_terms": [
+      "locArea",
+      "startTs",
+      "endTs"
+    ],
+    "gold_answer": "必需的字段是locArea、startTs和endTs，分别引用LocationArea5G和DateTime。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-180",
+    "question": "AnalyticsEvent枚举中，UE_MOBILITY值表示什么含义？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      692
+    ],
+    "required_terms": [
+      "UE_MOBILITY"
+    ],
+    "gold_answer": "UE_MOBILITY表示AF请求被通知关于UE移动性的分析信息。",
+    "category": "concept"
+  },
+  {
+    "id": "ts29522-181",
+    "question": "5GLANParameterProvision API的标题是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      695
+    ],
+    "required_terms": [
+      "3gpp-5glan-pp"
+    ],
+    "gold_answer": "API的标题是3gpp-5glan-pp，版本为1.0.2。",
+    "category": "openapi"
+  },
+  {
+    "id": "ts29522-182",
+    "question": "5GLAN参数配置订阅的POST操作中，afId参数位于哪里？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      698
+    ],
+    "required_terms": [
+      "afId",
+      "path"
+    ],
+    "gold_answer": "afId参数位于路径中，是必需的，用于标识AF。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-183",
+    "question": "在5GLAN参数配置订阅的响应中，哪个响应码表示未找到资源？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      700
+    ],
+    "required_terms": [
+      "404"
+    ],
+    "gold_answer": "404响应码表示未找到资源，引用TS29122_CommonData.yaml中的404响应。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-184",
+    "question": "在5GLAN参数配置订阅的GET操作中，成功响应的响应码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      702
+    ],
+    "required_terms": [
+      "200"
+    ],
+    "gold_answer": "成功响应的响应码是200，返回5GLanParametersProvision模式。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-185",
+    "question": "5GLAN参数配置订阅的PUT操作中，subscriptionId参数位于哪里？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      704
+    ],
+    "required_terms": [
+      "subscriptionId",
+      "path"
+    ],
+    "gold_answer": "subscriptionId参数位于路径中，是必需的，用于标识订阅资源。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-186",
+    "question": "5GLAN参数配置订阅的PUT操作中，成功更新的响应码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      706
+    ],
+    "required_terms": [
+      "204"
+    ],
+    "gold_answer": "成功更新的响应码是204，表示资源已成功更新且无内容返回。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-187",
+    "question": "在OpenAPI规范中，当响应码为411时，引用了哪个文件中的哪个组件？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      707
+    ],
+    "required_terms": [
+      "TS29122_CommonData.yaml",
+      "411"
+    ],
+    "gold_answer": "引用了TS29122_CommonData.yaml文件中的components/responses/411组件。",
+    "category": "openapi"
+  },
+  {
+    "id": "ts29522-188",
+    "question": "在5GLanParametersProvisionPatch的请求体中，使用了哪种媒体类型？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      709
+    ],
+    "required_terms": [
+      "application/merge-patch+json"
+    ],
+    "gold_answer": "使用了application/merge-patch+json媒体类型。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-189",
+    "question": "在OpenAPI规范中，当响应码为413时，引用了哪个文件中的哪个组件？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      711
+    ],
+    "required_terms": [
+      "TS29122_CommonData.yaml",
+      "413"
+    ],
+    "gold_answer": "引用了TS29122_CommonData.yaml文件中的components/responses/413组件。",
+    "category": "openapi"
+  },
+  {
+    "id": "ts29522-190",
+    "question": "5GLanParametersProvisionPatch模式中，5gLanParamsPatch字段引用了哪个模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      715
+    ],
+    "required_terms": [
+      "5gLanParamsPatch",
+      "5GLanParametersPatch"
+    ],
+    "gold_answer": "5gLanParamsPatch字段引用了5GLanParametersPatch模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-191",
+    "question": "AppDescriptor模式中，appIds字段的additionalProperties引用了哪个模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      718
+    ],
+    "required_terms": [
+      "appIds",
+      "ApplicationId"
+    ],
+    "gold_answer": "appIds字段的additionalProperties引用了ApplicationId模式。",
+    "category": "data_model"
+  },
+  {
+    "id": "ts29522-192",
+    "question": "ApplyingBdtPolicy API的标题是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      720
+    ],
+    "required_terms": [
+      "3gpp-applying-bdt-policy"
+    ],
+    "gold_answer": "标题是3gpp-applying-bdt-policy。",
+    "category": "openapi"
+  },
+  {
+    "id": "ts29522-193",
+    "question": "在GET Applied BDT Policy Subscription的响应中，200响应码的content类型是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      722
+    ],
+    "required_terms": [
+      "application/json",
+      "AppliedBdtPolicy"
+    ],
+    "gold_answer": "200响应码的content类型是application/json，其schema为AppliedBdtPolicy数组。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-194",
+    "question": "在创建订阅资源的POST操作中，成功创建后返回的响应码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      724
+    ],
+    "required_terms": [
+      "201"
+    ],
+    "gold_answer": "成功创建后返回201响应码。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-195",
+    "question": "在创建订阅资源的POST操作中，Location头部的描述是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      725
+    ],
+    "required_terms": [
+      "Location"
+    ],
+    "gold_answer": "Location头部包含新创建资源的URI。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-196",
+    "question": "在路径/{afId}/subscriptions/{subscriptionId}中，subscriptionId参数位于哪个位置？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      727
+    ],
+    "required_terms": [
+      "subscriptionId",
+      "path"
+    ],
+    "gold_answer": "subscriptionId参数位于path位置。",
+    "category": "resource"
+  },
+  {
+    "id": "ts29522-197",
+    "question": "在更新订阅资源的PATCH操作中，请求体使用了哪种媒体类型？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      729
+    ],
+    "required_terms": [
+      "application/merge-patch+json"
+    ],
+    "gold_answer": "请求体使用了application/merge-patch+json媒体类型。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-198",
+    "question": "在PATCH操作成功修改订阅后，返回的响应码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      731
+    ],
+    "required_terms": [
+      "204"
+    ],
+    "gold_answer": "返回204响应码，表示无内容，订阅修改成功。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-199",
+    "question": "在删除订阅的DELETE操作中，成功删除后返回的响应码是什么？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      733
+    ],
+    "required_terms": [
+      "204"
+    ],
+    "gold_answer": "返回204响应码，表示无内容，删除成功。",
+    "category": "http"
+  },
+  {
+    "id": "ts29522-200",
+    "question": "在AppliedBdtPolicy模式中，externalGroupId字段引用了哪个模式？",
+    "expected_source": "29522-gh0.pdf",
+    "expected_chunk_indexes": [
+      734
+    ],
+    "required_terms": [
+      "externalGroupId",
+      "ExternalGroupId"
+    ],
+    "gold_answer": "externalGroupId字段引用了ExternalGroupId模式。",
+    "category": "data_model"
+  }
+]

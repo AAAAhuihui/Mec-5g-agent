@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1180" viewBox="0 0 1200 1180">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#555" />
+    </marker>
+    <style>
+      .box { fill: #f7f8fa; stroke: #999; stroke-width: 1.4; rx: 8; }
+      .tool { fill: #eef6ff; stroke: #6d9fd1; stroke-width: 1.4; rx: 8; }
+      .rag { fill: #f2f8ef; stroke: #76a668; stroke-width: 1.4; rx: 8; }
+      .fail { fill: #fff1f0; stroke: #d46b6b; stroke-width: 1.4; rx: 8; }
+      .final { fill: #f5f0ff; stroke: #8b6bd4; stroke-width: 1.4; rx: 8; }
+      .decision { fill: #fff7e6; stroke: #999; stroke-width: 1.4; }
+      .line { stroke: #555; stroke-width: 1.6; fill: none; marker-end: url(#arrow); }
+      .loop { stroke: #777; stroke-width: 1.4; fill: none; marker-end: url(#arrow); stroke-dasharray: 6 5; }
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", Arial, sans-serif; fill: #222; font-size: 18px; }
+      .small { font-size: 15px; fill: #444; }
+      .title { font-size: 28px; font-weight: 700; }
+      .label { font-size: 15px; font-weight: 600; fill: #333; }
+    </style>
+  </defs>
+
+  <text x="600" y="44" text-anchor="middle" class="title">LangGraph 精简流程图</text>
+
+  <rect class="box" x="455" y="80" width="290" height="58" />
+  <text x="600" y="116" text-anchor="middle">用户问题</text>
+
+  <rect class="box" x="455" y="170" width="290" height="70" />
+  <text x="600" y="199" text-anchor="middle">/chat + Contextualizer</text>
+  <text x="600" y="222" text-anchor="middle" class="small">会话历史 + 追问改写</text>
+
+  <rect class="box" x="455" y="272" width="290" height="58" />
+  <text x="600" y="308" text-anchor="middle">LangGraph initial_state</text>
+
+  <rect class="box" x="455" y="362" width="290" height="70" />
+  <text x="600" y="391" text-anchor="middle">classify</text>
+  <text x="600" y="414" text-anchor="middle" class="small">intent / entities / need_retrieval</text>
+
+  <rect class="tool" x="425" y="464" width="350" height="76" />
+  <text x="600" y="494" text-anchor="middle">select_tool</text>
+  <text x="600" y="518" text-anchor="middle" class="small">DeepSeek OpenAI-compatible tool_calls</text>
+
+  <polygon class="decision" points="600,580 740,660 600,740 460,660" />
+  <text x="600" y="653" text-anchor="middle">工具选择</text>
+  <text x="600" y="678" text-anchor="middle">结果</text>
+
+  <path class="line" d="M600 138 V170" />
+  <path class="line" d="M600 240 V272" />
+  <path class="line" d="M600 330 V362" />
+  <path class="line" d="M600 432 V464" />
+  <path class="line" d="M600 540 V580" />
+
+  <rect class="fail" x="50" y="625" width="230" height="70" />
+  <text x="165" y="653" text-anchor="middle">tool_selection_failed</text>
+  <text x="165" y="676" text-anchor="middle" class="small">不执行工具</text>
+  <path class="line" d="M460 660 H280" />
+  <text x="365" y="642" text-anchor="middle" class="label">失败</text>
+
+  <rect class="tool" x="50" y="790" width="260" height="80" />
+  <text x="180" y="820" text-anchor="middle">code_analysis</text>
+  <text x="180" y="844" text-anchor="middle" class="small">run_code_search</text>
+  <path class="line" d="M505 715 C380 760 330 810 310 825" />
+  <text x="380" y="760" class="label">code_search</text>
+
+  <rect class="box" x="455" y="790" width="290" height="80" />
+  <text x="600" y="820" text-anchor="middle">general_answer</text>
+  <text x="600" y="844" text-anchor="middle" class="small">DeepSeek 直接回答</text>
+  <path class="line" d="M600 740 V790" />
+  <text x="620" y="766" class="label">general_answer</text>
+
+  <rect class="rag" x="895" y="765" width="260" height="70" />
+  <text x="1025" y="794" text-anchor="middle">rewrite_queries</text>
+  <text x="1025" y="817" text-anchor="middle" class="small">生成检索 Query</text>
+  <path class="line" d="M695 715 C820 750 870 785 895 800" />
+  <text x="805" y="758" class="label">rag_retrieve</text>
+
+  <rect class="rag" x="895" y="875" width="260" height="80" />
+  <text x="1025" y="905" text-anchor="middle">retrieve</text>
+  <text x="1025" y="929" text-anchor="middle" class="small">向量检索 + 关键词检索</text>
+  <path class="line" d="M1025 835 V875" />
+
+  <rect class="rag" x="895" y="995" width="260" height="70" />
+  <text x="1025" y="1024" text-anchor="middle">rerank + CRAG</text>
+  <text x="1025" y="1047" text-anchor="middle" class="small">检索质量评估</text>
+  <path class="line" d="M1025 955 V995" />
+
+  <polygon class="decision" points="1025,1100 1135,1160 1025,1220 915,1160" transform="translate(0,-55)" />
+  <text x="1025" y="1098" text-anchor="middle">质量是否可用?</text>
+  <path class="line" d="M1025 1065 V1088" />
+
+  <path class="loop" d="M915 1105 C820 1080 820 910 895 915" />
+  <text x="810" y="1020" text-anchor="middle" class="label">需补充</text>
+
+  <rect class="rag" x="455" y="930" width="290" height="70" />
+  <text x="600" y="958" text-anchor="middle">compress_evidence</text>
+  <text x="600" y="981" text-anchor="middle" class="small">证据压缩</text>
+  <path class="line" d="M965 1132 C850 1120 770 985 745 965" />
+  <text x="830" y="1080" class="label">可用 / 终止</text>
+
+  <rect class="box" x="455" y="1030" width="290" height="70" />
+  <text x="600" y="1058" text-anchor="middle">generate_answer</text>
+  <text x="600" y="1081" text-anchor="middle" class="small">基于证据生成答案</text>
+  <path class="line" d="M600 1000 V1030" />
+
+  <rect class="box" x="455" y="1130" width="290" height="70" />
+  <text x="600" y="1158" text-anchor="middle">self_check</text>
+  <text x="600" y="1181" text-anchor="middle" class="small">自检：final / revise / retrieve_more</text>
+  <path class="line" d="M600 1100 V1130" />
+
+  <path class="loop" d="M455 1165 C360 1160 360 1070 455 1065" />
+  <text x="355" y="1120" text-anchor="middle" class="label">revise</text>
+
+  <path class="loop" d="M745 1165 C820 1165 830 920 895 915" />
+  <text x="830" y="1160" class="label">retrieve_more</text>
+
+  <rect class="final" x="455" y="1240" width="290" height="70" />
+  <text x="600" y="1268" text-anchor="middle">finalize</text>
+  <text x="600" y="1291" text-anchor="middle" class="small">返回 ChatResponse</text>
+  <path class="line" d="M600 1200 V1240" />
+
+  <path class="line" d="M165 695 C165 1265 455 1275 455 1275" />
+  <path class="line" d="M180 870 C180 1275 455 1275 455 1275" />
+  <path class="line" d="M600 870 V930" />
+
+  <rect class="tool" x="50" y="450" width="270" height="116" />
+  <text x="185" y="480" text-anchor="middle">Tool Definitions</text>
+  <text x="185" y="505" text-anchor="middle" class="small">app/tools/definitions.py</text>
+  <text x="185" y="530" text-anchor="middle" class="small">code_search / rag_retrieve</text>
+  <text x="185" y="552" text-anchor="middle" class="small">general_answer</text>
+  <path class="line" d="M320 508 H425" />
+</svg>

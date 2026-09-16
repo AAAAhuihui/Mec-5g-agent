@@ -1,0 +1,42 @@
+flowchart TD
+    A[用户问题] --> B[/chat]
+    B --> C[Contextualizer<br/>多轮追问改写]
+    C --> D[LangGraph initial_state]
+
+    D --> E[classify<br/>意图与实体识别]
+    E --> F[select_tool<br/>DeepSeek tool_calls]
+    F --> G{工具选择结果}
+
+    G -- tool_calls 失败 --> H[tool_selection_failed]
+    H --> Z[返回 ChatResponse]
+
+    G -- code_search --> I[code_analysis]
+    I --> I1[run_code_search<br/>搜索本地代码]
+    I1 --> Z
+
+    G -- general_answer --> J[general_answer]
+    J --> Z
+
+    G -- rag_retrieve --> K[rewrite_queries]
+    K --> L[retrieve<br/>向量检索 + 关键词检索]
+    L --> M[rerank + CRAG]
+    M --> N{检索质量}
+
+    N -- 需补充 --> L
+    N -- 可用/终止 --> O[compress_evidence]
+    O --> P[generate_answer]
+    P --> Q[self_check]
+    Q --> R{自检结果}
+
+    R -- revise_answer --> P
+    R -- retrieve_more --> L
+    R -- final/达到上限 --> S[finalize]
+    S --> Z
+
+    subgraph ToolSchemas[app/tools/definitions.py]
+        T1[code_search]
+        T2[rag_retrieve]
+        T3[general_answer]
+    end
+
+    F -. tools schema .-> ToolSchemas

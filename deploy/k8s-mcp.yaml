@@ -1,0 +1,81 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agent-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-mcp
+  template:
+    metadata:
+      labels:
+        app: k8s-mcp
+    spec:
+      serviceAccountName: k8s-mcp
+      # Prevent the k8s-mcp Service from injecting K8S_MCP_PORT=tcp://...
+      # over the server's numeric listen-port configuration.
+      enableServiceLinks: false
+      containers:
+        - name: k8s-mcp
+          image: YOUR_REGISTRY/mec-k8s-mcp:0.1.1
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: mcp
+              containerPort: 8000
+          env:
+            - name: K8S_MCP_HOST
+              value: "0.0.0.0"
+            - name: K8S_MCP_PORT
+              value: "8000"
+            - name: K8S_ALLOWED_NAMESPACES
+              value: "REPLACE_WITH_TARGET_NAMESPACE"
+            - name: K8S_LOG_MAX_LINES
+              value: "500"
+            - name: K8S_LOG_MAX_BYTES
+              value: "262144"
+            - name: K8S_LOG_MAX_SINCE_SECONDS
+              value: "86400"
+          readinessProbe:
+            tcpSocket:
+              port: mcp
+          livenessProbe:
+            tcpSocket:
+              port: mcp
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8s-mcp
+  namespace: agent-system
+spec:
+  selector:
+    app: k8s-mcp
+  ports:
+    - name: mcp
+      port: 8000
+      targetPort: mcp

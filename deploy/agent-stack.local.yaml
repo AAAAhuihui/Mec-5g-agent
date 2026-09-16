@@ -1,0 +1,294 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: agent-system
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mec-agent-config
+  namespace: agent-system
+data:
+  DEEPSEEK_BASE_URL: "https://api.deepseek.com"
+  DEEPSEEK_MODEL: "deepseek-chat"
+  WEB_SEARCH_MAX_RESULTS: "5"
+  K8S_MCP_URL: "http://k8s-mcp.agent-system.svc.cluster.local:8000/mcp"
+  K8S_MCP_TIMEOUT_SECONDS: "30"
+  K8S_DIAGNOSTICS_MAX_LOG_LINES: "500"
+  K8S_DIAGNOSTICS_MAX_SINCE_SECONDS: "86400"
+  CMD_TOOL_ENABLED: "false"
+  FILE_TOOL_ENABLED: "false"
+  EMBEDDING_MODEL: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  EMBEDDING_ALLOW_DOWNLOAD: "1"
+  CHROMA_DIR: "/data/chroma_db"
+  RAW_DOCS_DIR: "/app/data/raw_docs"
+  CHROMA_COLLECTION: "mec_5g_docs"
+  RAG_TOP_K: "6"
+  RAG_VECTOR_CANDIDATE_K: "40"
+  RAG_BM25_CANDIDATE_K: "40"
+  RAG_FUSED_CANDIDATE_K: "30"
+  RAG_RRF_K: "60"
+  RERANKER_BACKEND: "lightweight"
+  RERANKER_MODEL: "BAAI/bge-reranker-v2-m3"
+  RERANKER_DEVICE: "cpu"
+  RERANKER_BATCH_SIZE: "8"
+  RERANKER_MAX_LENGTH: "512"
+  RERANKER_ALLOW_DOWNLOAD: "false"
+  RERANKER_FAIL_OPEN: "true"
+  MYSQL_HOST: "mysql"
+  MYSQL_PORT: "3306"
+  MYSQL_USER: "root"
+  MYSQL_DATABASE: "mec_5g_agent"
+  REDIS_HOST: "redis"
+  REDIS_PORT: "6379"
+  REDIS_DB: "0"
+  REDIS_CONTEXT_TTL_SECONDS: "600"
+  REDIS_SOCKET_TIMEOUT_SECONDS: "1.0"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-data
+  namespace: agent-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: chroma-data
+  namespace: agent-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: model-cache
+  namespace: agent-system
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: agent-system
+spec:
+  selector:
+    app: mysql
+  ports:
+    - name: mysql
+      port: 3306
+      targetPort: mysql
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: agent-system
+spec:
+  serviceName: mysql
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.4
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: mysql
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: mec-agent-secrets
+                  key: MYSQL_ROOT_PASSWORD
+            - name: MYSQL_DATABASE
+              value: "mec_5g_agent"
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          startupProbe:
+            tcpSocket:
+              port: mysql
+            periodSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            tcpSocket:
+              port: mysql
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 250m
+              memory: 512Mi
+            limits:
+              cpu: "1"
+              memory: 2Gi
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: mysql-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: agent-system
+spec:
+  selector:
+    app: redis
+  ports:
+    - name: redis
+      port: 6379
+      targetPort: redis
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: agent-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis
+  template:
+    metadata:
+      labels:
+        app: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis:7-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: redis
+              containerPort: 6379
+          readinessProbe:
+            tcpSocket:
+              port: redis
+            periodSeconds: 5
+          livenessProbe:
+            tcpSocket:
+              port: redis
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mec-agent
+  namespace: agent-system
+spec:
+  selector:
+    app: mec-agent
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mec-agent
+  namespace: agent-system
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: mec-agent
+  template:
+    metadata:
+      labels:
+        app: mec-agent
+    spec:
+      securityContext:
+        fsGroup: 10001
+        fsGroupChangePolicy: OnRootMismatch
+      containers:
+        - name: mec-agent
+          image: docker.io/library/mec-5g-rag-agent:0.1.0
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: mec-agent-config
+            - secretRef:
+                name: mec-agent-secrets
+          volumeMounts:
+            - name: chroma-data
+              mountPath: /data/chroma_db
+            - name: model-cache
+              mountPath: /home/agentuser/.cache/huggingface
+          startupProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            failureThreshold: 60
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            initialDelaySeconds: 30
+            periodSeconds: 20
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 10001
+            runAsGroup: 10001
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+          resources:
+            requests:
+              cpu: 500m
+              memory: 1Gi
+            limits:
+              cpu: "2"
+              memory: 4Gi
+      volumes:
+        - name: chroma-data
+          persistentVolumeClaim:
+            claimName: chroma-data
+        - name: model-cache
+          persistentVolumeClaim:
+            claimName: model-cache
